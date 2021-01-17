@@ -1,0 +1,14 @@
+mycar:
+  brand: niubi
+  price: 111
+#spring:
+#  mvc:
+#    static-path-pattern: /res/**  #设置了访问前缀欢迎页面有问题。主要是为了方便拦截器
+#  web:
+#    resources:
+#      static-locations: classpath:/res/
+spring:
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true

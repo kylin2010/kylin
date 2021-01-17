@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>atguigu欢迎您~</h1>
+
+<form method="get" action="/user">
+    <input value="gethhh提交" type="submit"/>
+</form>
+
+<form method="post" action="/user">
+<!--    <input type="hidden" name="_method" value="DELETE"/>-->
+    <input value="posthhh提交" type="submit"/>
+</form>
+
+<form method="post" action="/user">
+        <input type="hidden" name="_m" value="DELETE"/>
+    <input value="delete提交" type="submit"/>
+</form>
+<hr>3
+测试基本注解12222
+<a href="/car/1">@PathVariable</a><br>
+<a href="/car/1">@RequestHeader</a><br>
+<a href="/car?brand=byd">@Requstparam-get</a><br>
+
+
+<form action="/save" method="post">
+    <label>用户名</label><input type="text" name="uu">
+    <label>密码</label><input type="password" name="pp">
+    <input type="submit" value="调教">
+</form>
+
+<form action="/save1" method="post">
+    <label>用户名</label><input type="text" name="uu">
+    <label>密码</label><input type="password" name="pp">
+    <input type="submit" value="调教">
+</form>
+</body>
+</html>
