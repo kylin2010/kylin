@@ -21,5 +21,5 @@ import org.springframework.stereotype.Component;
 public class Car {
     private String brand;
     private Integer price;
-
+///car在改变
 }
