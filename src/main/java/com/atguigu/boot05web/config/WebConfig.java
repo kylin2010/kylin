@@ -7,6 +7,9 @@ import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.util.UrlPathHelper;
 
+/**
+ * @author wj
+ */
 @Configuration(proxyBeanMethods = false)
 public class WebConfig implements WebMvcConfigurer {
 
@@ -17,9 +20,15 @@ public class WebConfig implements WebMvcConfigurer {
         return methodFilter;
     }
 
-    //@bean  @webmvconfigure===但是为什么返回这个类不清楚
-    //也可以实现webmvcconfigurer
-    //这里分号矩阵
+
+
+    /**
+     *  bean@webmvconfigure===但是为什么返回这个类不清楚
+     *  也可以实现webmvcconfigurer
+     *  这里分号矩阵
+     * @return 返回webmvc
+     */
+
     @Bean
     public WebMvcConfigurer webMvcConfigurer(){
         return new WebMvcConfigurer() {
@@ -36,7 +45,7 @@ public class WebConfig implements WebMvcConfigurer {
     public void configurePathMatch(PathMatchConfigurer configurer) {
         UrlPathHelper pathHelper = new UrlPathHelper();
         pathHelper.setRemoveSemicolonContent(false);
-        configurer.setUrlPathHelper(pathHelper);
-    }*/
+        configurer.setUrlPathHelper(pathHelper);  }*/
+
 
 }
