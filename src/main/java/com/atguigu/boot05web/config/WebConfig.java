@@ -1,8 +1,13 @@
 package com.atguigu.boot05web.config;
 
+import com.atguigu.boot05web.Bean.Cat;
+import com.atguigu.boot05web.Inteceptor.LoginInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.util.UrlPathHelper;
@@ -37,6 +42,32 @@ public class WebConfig implements WebMvcConfigurer {
                 UrlPathHelper pathHelper = new UrlPathHelper();
                 pathHelper.setRemoveSemicolonContent(false);
                 registry.setUrlPathHelper(pathHelper);
+            }
+
+            @Override
+            public void addFormatters(FormatterRegistry registry) {
+                registry.addConverter(new Converter<String, Cat>() {
+
+                    @Override
+                    public Cat convert(String s) {
+
+                        if(!s.isEmpty()){
+                            String[] split = s.split(",");
+                            Cat cat = new Cat();
+                            cat.setName(split[0]);
+                            cat.setAge(Integer.parseInt(split[1]));
+                            return cat;
+                        }
+                        return null;
+                    }
+                });
+            }
+
+            @Override
+            public void addInterceptors(InterceptorRegistry registry) {
+                registry.addInterceptor(new LoginInterceptor())
+                        .addPathPatterns("/**")   //所有请求都会被拦截，包括静态资源
+                        .excludePathPatterns("/login","/","/css/**","/images/**","/js/**");//或者yml配置静态资源前缀
             }
         };
     }

@@ -3,6 +3,7 @@ package com.atguigu.boot05web.Bean;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -15,8 +16,9 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Component
+@ToString
 public class User {
     private Integer age;
     private Date birth;
-
+    private Cat cat;
 }
