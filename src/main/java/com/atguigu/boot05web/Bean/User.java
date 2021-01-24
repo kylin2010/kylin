@@ -21,4 +21,8 @@ public class User {
     private Integer age;
     private Date birth;
     private Cat cat;
+
+    public User(Integer age) {
+        this.age = age;
+    }
 }
