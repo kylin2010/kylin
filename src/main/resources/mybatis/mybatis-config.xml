@@ -18,7 +18,8 @@
 <!--    <mappers>-->
 <!--        <mapper resource="org/mybatis/example/BlogMapper.xml"/>-->
 <!--    </mappers>-->
-    <settings>
-        <setting name="mapUnderscoreToCamelCase" value="true"/>
-    </settings>
+<!--    在自动配置类中的configuration下都能找到-->
+<!--    <settings>-->
+<!--        <setting name="mapUnderscoreToCamelCase" value="true"/>-->
+<!--    </settings>-->
 </configuration>

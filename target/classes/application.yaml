@@ -64,5 +64,8 @@ server:
 
 #配置mybatis两个规则
 mybatis:
-  config-location: classpath:mybatis/mybatis-config.xml
+#  configration-location和全局配置文件2个中选一个
+#  config-location: classpath:mybatis/mybatis-config.xml
   mapper-locations: classpath:mybatis/mapper/*.xml
+  configuration:  #指定mybatis全局配置文件中的相关配置
+    map-underscore-to-camel-case: true
