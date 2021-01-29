@@ -13,7 +13,7 @@ import java.util.Date;
 public class Alarm {
 
     private Long alarmId;
-    private String alermNo;
+    private String alarmNo;
     private Date date;
     private String content;
 

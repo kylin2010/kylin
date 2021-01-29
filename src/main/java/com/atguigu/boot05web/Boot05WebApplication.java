@@ -1,5 +1,6 @@
 package com.atguigu.boot05web;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -9,6 +10,7 @@ import org.springframework.context.ConfigurableApplicationContext;
  * @author wj
  */
 //@ServletComponentScan(basePackages="com.atguigu.boot05web")
+    @MapperScan(basePackages = "com.atguigu.boot05web.mapper")
 @SpringBootApplication
 public class Boot05WebApplication {
 

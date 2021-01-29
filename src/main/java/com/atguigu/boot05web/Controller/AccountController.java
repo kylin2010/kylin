@@ -5,10 +5,7 @@ import com.atguigu.boot05web.Bean.Alarm;
 import com.atguigu.boot05web.service.AccountService;
 import com.atguigu.boot05web.service.AlarmService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author kylin
@@ -40,5 +37,11 @@ public class AccountController {
 
         //测试git中版本回退
         return alarmService.getById(id);
-    };
+    }
+
+    @PostMapping("/alarm")
+    public Alarm saveAlarm(Alarm alarm){
+        alarmService.saveAlarm(alarm);
+        return alarm;
+    }
 }

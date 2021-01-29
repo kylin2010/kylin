@@ -12,6 +12,9 @@ import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.util.UrlPathHelper;
 
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  * @author wj
  */
@@ -59,6 +62,23 @@ public class WebConfig implements WebMvcConfigurer {
                             return cat;
                         }
                         return null;
+                    }
+                });
+
+                registry.addConverter(new Converter<String, Date>() {
+
+                    @Override
+                    public Date convert(String s) {
+                        if (!s.isEmpty()) {
+                            String[] split = s.split("-");
+                            Calendar instance = Calendar.getInstance();
+                            instance.clear();
+                            instance.set(Calendar.YEAR,Integer.parseInt(split[0]));
+                            instance.set(Calendar.MONTH,Integer.parseInt(split[1]));
+                            instance.set(Calendar.DAY_OF_MONTH,Integer.parseInt(split[2]));
+                            return instance.getTime();
+                        }
+                        return new Date();
                     }
                 });
             }

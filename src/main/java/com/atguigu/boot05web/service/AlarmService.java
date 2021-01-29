@@ -19,4 +19,9 @@ public class AlarmService {
     public Alarm getById(Long id){
         return alarmMapper.getAlarmById(id);
     }
+
+    public Alarm saveAlarm(Alarm alarm){
+        alarmMapper.insertAlarm(alarm);
+        return alarm;
+    }
 }
