@@ -4,6 +4,12 @@
       "name": "mycar",
       "type": "com.atguigu.boot05web.Bean.Car",
       "sourceType": "com.atguigu.boot05web.Bean.Car"
+    },
+    {
+      "name": "spring.datasource",
+      "type": "javax.sql.DataSource",
+      "sourceType": "com.atguigu.boot05web.config.MyDataSourceConfiguration",
+      "sourceMethod": "dataSource()"
     }
   ],
   "properties": [

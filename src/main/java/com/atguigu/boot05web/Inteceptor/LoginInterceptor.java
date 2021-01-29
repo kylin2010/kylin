@@ -1,5 +1,6 @@
 package com.atguigu.boot05web.Inteceptor;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpSession;
  * 1.这个拦截器要拦截哪些请求
  * 2.把拦截器放到容器中
  */
+@Slf4j
 public class LoginInterceptor implements HandlerInterceptor {
     /**
      * 目标方法执行以前
@@ -34,10 +36,11 @@ public class LoginInterceptor implements HandlerInterceptor {
         }
         //拦截住,跳转到登录界面，重定向取不出东西
         /* response.sendRedirect("/");*/
-       request.setAttribute("msg","请先登录");
-        request.getRequestDispatcher("/").forward(request,response);
+        log.info(request.getRequestURI()+"000000000000000---");
+      // request.setAttribute("msg","请先登录");
+       // request.getRequestDispatcher("/").forward(request,response);
 
-        return false;
+        return true;
     }
 
     /**
