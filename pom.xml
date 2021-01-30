@@ -114,6 +114,8 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>2.4.1</version>
                 <configuration>
+<!--                    听说加了这一句在远程才能访问入口。远程注意后缀名.jar-->
+<!--                    <mainClass>com.hk.order.OrderApplication</mainClass>-->
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>

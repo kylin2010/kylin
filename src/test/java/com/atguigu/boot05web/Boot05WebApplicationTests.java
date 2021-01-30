@@ -1,5 +1,7 @@
 package com.atguigu.boot05web;
 
+import com.atguigu.boot05web.Bean.User22;
+import com.atguigu.boot05web.mapper.User22Mapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +42,14 @@ class Boot05WebApplicationTests {
     @Test
     void test1(){
         log.info("数据源类型:{}",dataSource.getClass());
+    }
+
+    @Autowired
+    User22Mapper user22Mapper;
+    @Test
+    void test2(){
+        User22 user22 = user22Mapper.selectById(1L);
+        log.info("用户信息:{}",user22);
     }
 
 }
