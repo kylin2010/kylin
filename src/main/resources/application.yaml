@@ -1,0 +1,13 @@
+server:
+  port: 8888
+
+spring:
+  datasource:
+    druid:
+      url: jdbc:mysql//localhost:3306/dingding?serverTimezone=GMT
+      username: root
+      password: ''
+
+  output:
+    ansi:
+      enabled: always
