@@ -6,6 +6,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
@@ -50,6 +52,21 @@ class Boot05WebApplicationTests {
     void test2(){
         User22 user22 = user22Mapper.selectById(1L);
         log.info("用户信息:{}",user22);
+    }
+
+    @Autowired
+    StringRedisTemplate redisTemplate;
+    @Test
+    void test3(){
+        ValueOperations<String, String> valueOperations = redisTemplate.opsForValue();
+        valueOperations.set("hello","world");
+    }
+
+    @Test
+    void test4(){
+        ValueOperations<String, String> valueOperations = redisTemplate.opsForValue();
+        String hello = valueOperations.get("hello");
+        System.out.println("hello = " + hello);
     }
 
 }

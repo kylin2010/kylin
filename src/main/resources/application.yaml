@@ -47,6 +47,7 @@ spring:
 
       aop-patterns: ['com.atguigu.boot.*']
 
+
 #开启视图解析器
   thymeleaf:
     prefix: classpath:/templates/
@@ -59,6 +60,18 @@ spring:
   output:
     ansi:
       enabled: always
+# redis相关配置
+  redis:
+    host: r-bp1pukfd9r32kmod2bpd.redis.rds.aliyuncs.com
+    password: kylin:Kylin2010
+    port: 6379
+    client-type: jedis
+    jedis:
+      pool:
+        max-active: 10
+        max-idle: 5  #最大空闲数
+#    url: redis://user:password@example.com:6375
+
 server:
   port: 8902
 

@@ -2,6 +2,8 @@ package com.atguigu.boot05web.config;
 
 import com.atguigu.boot05web.Bean.Cat;
 import com.atguigu.boot05web.Inteceptor.LoginInterceptor;
+import com.atguigu.boot05web.Inteceptor.RedisUrlCountInterceptor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.converter.Converter;
@@ -20,6 +22,15 @@ import java.util.Date;
  */
 @Configuration(proxyBeanMethods = false)
 public class WebConfig implements WebMvcConfigurer {
+
+
+    /**
+     * filter和interceptor几乎具有相同放的功能
+     * filter是servlet原生的，脱离spring也能使用
+     * interceptor可以使用spring的autowired功能
+     */
+    @Autowired
+    RedisUrlCountInterceptor redisUrlCountInterceptor;  //只有从容器中取才能解析template
 
     @Bean
     public HiddenHttpMethodFilter hiddenHttpMethodFilter(){
@@ -88,6 +99,10 @@ public class WebConfig implements WebMvcConfigurer {
                 registry.addInterceptor(new LoginInterceptor())
                         .addPathPatterns("/**")   //所有请求都会被拦截，包括静态资源
                         .excludePathPatterns("/login","/","/css/**","/images/**","/js/**");//或者yml配置静态资源前缀
+
+                registry.addInterceptor(redisUrlCountInterceptor)
+                        .addPathPatterns("/**")
+                        .excludePathPatterns("/login","/","/css/**","/images/**","/js/**","/fonts/");//或者yml配置静态资源前缀
             }
         };
     }
