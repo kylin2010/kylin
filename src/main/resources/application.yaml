@@ -4,10 +4,16 @@ server:
 spring:
   datasource:
     druid:
-      url: jdbc:mysql//localhost:3306/dingding?serverTimezone=GMT
+      url: jdbc:mysql://localhost:3306/dingding
       username: root
       password: ''
 
   output:
     ansi:
       enabled: always
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'    #以web方式暴露所有节点。在java——console中jmx能获取所有节点
