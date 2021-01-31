@@ -5,6 +5,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.concurrent.TimeUnit;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 /**
  * @author kylin
  * @description junit5单元测试
@@ -62,5 +64,54 @@ public class Junit5Test {
     @Test
     void testRepeat(){
         System.out.println("5");
+    }
+
+    /**
+     * 前边的额断言失败，后面的代码不会执行
+     */
+    @Test
+    @DisplayName("测试断言")
+    void testAssersions(){
+
+        Assertions.assertEquals(5,cal(2,3),"业务逻辑计算错误");
+
+        Object o = new Object();
+        Object o1 = new Object();
+        Assertions.assertSame(o,o1,"对象不是同一个");
+
+
+    }
+
+    int cal(int a,int b){
+        return a+b;
+    }
+
+    @DisplayName("测试数组是否相等")
+    @Test
+    void testArrays(){
+        Assertions.assertArrayEquals(new int[]{2,3},new int[]{2,3});
+    }
+
+    @DisplayName("组合断言")
+    @Test
+    void testAll(){
+        assertAll("test",()->assertTrue(true&&true,"结果不是true"),
+                ()->assertEquals(6,cal(2,4),"预期数值和计算出来不一致"));
+    }
+
+    /**
+     * 断定一定出现异常
+     */
+    @DisplayName("异常断言")
+    @Test
+    void testException(){
+        assertThrows(ArithmeticException.class,()->{int i=10/2;});
+    }
+
+    @Test
+    void testFail(){
+        if(2==2){
+            fail("快速失败");
+        }
     }
 }
