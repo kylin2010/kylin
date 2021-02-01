@@ -1,0 +1,5 @@
+person:
+  name: test-牛逼
+  age: 66
+server:
+  port: 8000
