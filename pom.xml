@@ -96,6 +96,15 @@
     </dependencyManagement>
 
     <build>
+<!--        设置了resource才能让yaml文件中获取到值+改了还是获取不到-->
+<!--        <resources>-->
+<!--            <resource>-->
+<!--                <directory>src/main/resources</directory>-->
+<!--                <filtering>true</filtering>-->
+<!--            </resource>-->
+<!--        </resources>-->
+
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
